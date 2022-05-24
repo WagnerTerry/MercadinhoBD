@@ -24,7 +24,13 @@
 - npm install jest -D
 - npx jest --init
 - npm install ts-node -D
-- npm i -D jest @swc/jest
+- npm i -D jest @swc/jest {
+    // A map from regular expressions to paths to transformers
+   transform: {
+     "^.+\\.(t|j)sx?$": ["@swc/jest"]
+   },
+
+}
 
 -------------------- banco de dados - //Prisma-ORM
 
