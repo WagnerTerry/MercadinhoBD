@@ -24,6 +24,7 @@ routes.post("/products", async (req, res) => {
         // return res.status(201).json({data: products})
     //}
     const { name, description, image} = req.body;
+    const response = {name, description, image}
 
     const prismaProductsRepository = new PrismaProductsRepository()
     const submitProductUseCase = new SubmitProductUseCase(
@@ -36,5 +37,5 @@ routes.post("/products", async (req, res) => {
         image
     })
 
-     return res.status(201).send()
+     return res.status(201).send(response)
  })
