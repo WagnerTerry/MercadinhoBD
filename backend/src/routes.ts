@@ -6,10 +6,9 @@ import { SubmitProductUseCase } from './use-cases/submit-product-use-case';
 export const routes = express.Router()
 
 routes.get("/products", async (req, res) => {
-    // método get simples {
-    //     const products = await prisma.products.findMany()
-    //     return res.status(200).send(products)
-    // }
+    // método get simples 
+        const products = await prisma.products.findMany()
+        return res.status(200).send(products)
 })
 
 routes.post("/products", async (req, res) => {
@@ -23,6 +22,8 @@ routes.post("/products", async (req, res) => {
         // })
         // return res.status(201).json({data: products})
     //}
+
+    // usando repository
     const { name, description, image} = req.body;
     const response = {name, description, image}
 
