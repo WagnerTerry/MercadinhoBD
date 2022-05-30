@@ -40,3 +40,22 @@ routes.post("/products", async (req, res) => {
 
      return res.status(201).send(response)
  })
+
+ routes.put("/products", async (req, res) => {
+     const product = await prisma.products.update({
+         where: { id: req.body.id},
+         data: {
+             name: req.body.name,
+             description: req.body.description,
+             image: req.body.image
+         }
+     })
+     return res.status(204).send(product)
+ })
+
+ routes.delete('/products/:id', async (req, res) => {
+    await prisma.products.delete({
+         where: { id: req.params.id}
+     })
+     return res.status(202).send()
+ })
