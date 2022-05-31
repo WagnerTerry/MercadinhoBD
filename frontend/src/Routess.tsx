@@ -7,8 +7,8 @@ export function Routess(){
         <Router>
             <div id="route">
                 <Routes>
-                    <Route path={"/"} exact element={Home}  />
-                    <Route path={'/users'} element={Users} />
+                    <Route path={"/"} element={<Home />}  />
+                    <Route path={'/users'} element={<Users />} />
                 </Routes>
             </div>
         </Router>
