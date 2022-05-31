@@ -1,14 +1,15 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import "./style.scss"
 
-export function Home(){
+export function Home() {
     const [darkMode, setDarkMode] = useState(false)
 
-    function screenDarkMode(){
+    function screenDarkMode() {
         let element = document.body;
         element.classList.toggle("darkmode")
-    } 
+    }
 
     return (
         <div id="home">
@@ -17,6 +18,13 @@ export function Home(){
                 <h1>Mercadinho Banco de Dados</h1>
                 <button onClick={screenDarkMode}>DarkMode</button>
             </header>
+            <main>
+                <Link to="/users" className='link'>
+                    <button>
+                        Cadastrar Usuário
+                    </button>
+                </Link>
+            </main>
         </div>
     )
 }

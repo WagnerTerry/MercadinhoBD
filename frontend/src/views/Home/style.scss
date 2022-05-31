@@ -4,14 +4,24 @@
 }
 
 #home {
-
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
+    button {
+        cursor: pointer;
+    }
 
     header {
         display: flex;
         justify-content: space-around;
         align-items: center;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .link {
+            text-decoration: none;
+            color: black;
+        }
     }
 }
