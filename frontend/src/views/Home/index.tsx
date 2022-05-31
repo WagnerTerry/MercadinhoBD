@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import "./style.scss"
@@ -8,8 +8,19 @@ export function Home() {
 
     function screenDarkMode() {
         let element = document.body;
-        element.classList.toggle("darkmode")
+        let _darkmode = element.classList.toggle("darkmode")
+        localStorage.setItem("darkmode", "ativo")
+        if (_darkmode === false) {
+            localStorage.removeItem("darkmode")
+        }
     }
+
+    useEffect(() => {
+        let _darkmode = localStorage.getItem("darkmode")
+        if (_darkmode === "ativo") {
+            document.body.className = "darkmode"
+        }
+    }, [])
 
     return (
         <div id="home">
