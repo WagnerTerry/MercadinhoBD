@@ -4,6 +4,12 @@ import APIService from '../../services/api';
 
 import "./style.scss"
 
+interface ProductContentProps {
+    name: string;
+    description: string;
+    image?: string
+}
+
 export function Home() {
     const [products, setProducts] = useState([])
 
@@ -44,6 +50,15 @@ export function Home() {
                             Cadastrar Usuário
                         </button>
                     </Link>
+
+                    <h3>Produtos</h3>
+                    <div className='show-products'>
+                        <div>
+                            {products.map((prod: ProductContentProps) => (
+                                prod.name
+                            ))}
+                        </div>
+                    </div>
                 </>
             </main>
         </div>
