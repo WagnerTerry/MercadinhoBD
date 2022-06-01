@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import APIService from '../../services/api';
 
 import "./style.scss"
 
 export function Home() {
-    const [darkMode, setDarkMode] = useState(false)
+    const [products, setProducts] = useState([])
 
     function screenDarkMode() {
         let element = document.body;
@@ -20,6 +21,13 @@ export function Home() {
         if (_darkmode === "ativo") {
             document.body.className = "darkmode"
         }
+
+        const showProducts = async () => {
+            const _products = await APIService.getProducts()
+            setProducts(_products)
+        }
+
+        showProducts()
     }, [])
 
     return (
@@ -30,11 +38,13 @@ export function Home() {
                 <button onClick={screenDarkMode}>DarkMode</button>
             </header>
             <main>
-                <Link to="/users" className='link'>
-                    <button>
-                        Cadastrar Usuário
-                    </button>
-                </Link>
+                <>
+                    <Link to="/users" className='link'>
+                        <button>
+                            Cadastrar Usuário
+                        </button>
+                    </Link>
+                </>
             </main>
         </div>
     )

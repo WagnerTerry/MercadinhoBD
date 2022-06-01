@@ -7,6 +7,7 @@
 - npm install react-router-dom --save
 - npm install --save @types/react-router-dom
 - npm i sass
+- npm i axios
 
 --------------------Backend
 - npm install --save express
