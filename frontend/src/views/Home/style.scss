@@ -1,3 +1,7 @@
+body {
+    padding: 0 20px;
+}
+
 .darkmode {
     background-color: #0A0A0A;
     color: white;
@@ -33,6 +37,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background: linear-gradient(to right, #16b468, #cec32d);
         }
     }
 }

@@ -53,11 +53,22 @@ export function Home() {
 
                     <h3>Produtos</h3>
                     <div className='show-products'>
-                        <div>
+                        <table>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Image</th>
+                                <th>Ações</th>
+                            </tr>
                             {products.map((prod: ProductContentProps) => (
-                                prod.name
+                                <tr>
+                                    <td>{prod.name}</td>
+                                    <td>{prod.description}</td>
+                                    <td>{prod.image}</td>
+                                    <td><button>Deletar</button></td>
+                                </tr>
                             ))}
-                        </div>
+                        </table>
                     </div>
                 </>
             </main>
