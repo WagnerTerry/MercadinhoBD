@@ -38,6 +38,18 @@ export function Home() {
         showProducts()
     }, [])
 
+    async function addProduct(data: any) {
+        try {
+            await APIService.insertProduct(data)
+            setProducts((prevState: any) => [...prevState, data]);
+            toast.success("Produto criado com sucesso")
+            console.log("produto cadastrado: ", data)
+        } catch (e) {
+            toast.error("Erro ao criar produto")
+            console.log("Ocorreu um erro ao criar produto", e)
+        }
+    }
+
     async function deleteProduct(id: any) {
         try {
             await APIService.removeProduct(id)
