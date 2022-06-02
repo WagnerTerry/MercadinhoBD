@@ -8,6 +8,7 @@
 - npm install --save @types/react-router-dom
 - npm i sass
 - npm i axios
+- npm i react-toastify
 
 --------------------Backend
 - npm install --save express
