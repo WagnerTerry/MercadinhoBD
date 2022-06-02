@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import APIService from '../../services/api';
 
 import "./style.scss"
 
 interface ProductContentProps {
+    id: string;
     name: string;
     description: string;
     image?: string
@@ -36,6 +38,17 @@ export function Home() {
         showProducts()
     }, [])
 
+    async function deleteProduct(id: any) {
+        try {
+            await APIService.removeProduct(id)
+            setProducts(products.filter((prod: any) => prod.id !== id))
+            toast.success("Produto deletado com sucesso")
+        } catch (e) {
+            toast.error("Erro ao remover produto")
+            console.log("erro ao deletar produto", e)
+        }
+    }
+
     return (
         <div id="home">
             <header>
@@ -54,20 +67,24 @@ export function Home() {
                     <h3>Produtos</h3>
                     <div className='show-products'>
                         <table>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Image</th>
-                                <th>Ações</th>
-                            </tr>
-                            {products.map((prod: ProductContentProps) => (
+                            <thead>
                                 <tr>
-                                    <td>{prod.name}</td>
-                                    <td>{prod.description}</td>
-                                    <td>{prod.image}</td>
-                                    <td><button>Deletar</button></td>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Image</th>
+                                    <th>Ações</th>
                                 </tr>
-                            ))}
+                            </thead>
+                            <tbody>
+                                {products.slice(0, 14).map((prod: ProductContentProps, idx) => (
+                                    <tr key={idx}>
+                                        <td>{prod.name}</td>
+                                        <td>{prod.description}</td>
+                                        <td>{prod.image}</td>
+                                        <td><button onClick={() => deleteProduct(prod.id)}>Deletar</button></td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     </div>
                 </>
