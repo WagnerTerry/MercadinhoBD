@@ -66,26 +66,29 @@ export function Home() {
 
                     <h3>Produtos</h3>
                     <div className='show-products'>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Descrição</th>
-                                    <th>Image</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {products.slice(0, 14).map((prod: ProductContentProps, idx) => (
-                                    <tr key={idx}>
-                                        <td>{prod.name}</td>
-                                        <td>{prod.description}</td>
-                                        <td>{prod.image}</td>
-                                        <td><button onClick={() => deleteProduct(prod.id)}>Deletar</button></td>
+                        {products.length > 1 ?
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Descrição</th>
+                                        <th>Image</th>
+                                        <th>Ações</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {products.slice(0, 14).map((prod: ProductContentProps, idx) => (
+                                        <tr key={idx}>
+                                            <td>{prod.name}</td>
+                                            <td>{prod.description}</td>
+                                            <td>{prod.image}</td>
+                                            <td><button onClick={() => deleteProduct(prod.id)}>Deletar</button></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            : <span>Não há produtos cadastrados</span>
+                        }
                     </div>
                 </>
             </main>
