@@ -70,11 +70,18 @@ export function Home() {
             </header>
             <main>
                 <>
-                    <Link to="/users" className='link'>
-                        <button>
-                            Cadastrar Usuário
-                        </button>
-                    </Link>
+                    <div className='registration-options'>
+                        <Link to="/products" className='link'>
+                            <button>
+                                Cadastrar Produto
+                            </button>
+                        </Link>
+                        <Link to="/users" className='link'>
+                            <button>
+                                Cadastrar Usuário
+                            </button>
+                        </Link>
+                    </div>
 
                     <h3>Produtos</h3>
                     <div className='show-products'>

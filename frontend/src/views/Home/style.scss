@@ -20,6 +20,16 @@ body {
 
     main {
 
+        .registration-options {
+            display: flex;
+            justify-content: center;
+
+            button {
+                margin-right: 16px;
+            }
+        }
+
+
         a,
         h3 {
             display: flex;
