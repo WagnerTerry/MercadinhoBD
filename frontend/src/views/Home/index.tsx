@@ -13,7 +13,7 @@ interface ProductContentProps {
 }
 
 export function Home() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([] as any)
 
     function screenDarkMode() {
         let element = document.body;
@@ -89,7 +89,7 @@ export function Home() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.slice(0, 14).map((prod: ProductContentProps, idx) => (
+                                    {products.slice(0, 14).map((prod: ProductContentProps, idx: number) => (
                                         <tr key={idx}>
                                             <td>{prod.name}</td>
                                             <td>{prod.description}</td>
