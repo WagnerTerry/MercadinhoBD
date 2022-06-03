@@ -9,7 +9,7 @@ export function Product() {
                 <button>Voltar para Home</button>
             </Link>
             <div className='register-products'>
-                <h2>Cadastro de Produto</h2>
+                <h1>Cadastro de Produto</h1>
                 <form>
                     <input type="text"
                         name="product_name"
@@ -23,6 +23,7 @@ export function Product() {
                         name="product_image"
                         placeholder='Imagem'
                     />
+                    <input type="submit" value={"Salvar"} />
                 </form>
             </div>
         </div>
