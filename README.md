@@ -9,6 +9,8 @@
 - npm i sass
 - npm i axios
 - npm i react-toastify
+- npm install react-hook-form
+- npm install @hookform/resolvers yup
 
 --------------------Backend
 - npm install --save express
