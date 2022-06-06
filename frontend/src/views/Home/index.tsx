@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import APIService from '../../services/api';
@@ -37,19 +37,6 @@ export function Home() {
 
         showProducts()
     }, [])
-
-    async function changeProduct(data: string) {
-        try {
-            await APIService.updateProducts(data)
-            setProducts((prevState: string) => [...prevState, data])
-            toast.success("Produto atualizado")
-            console.log("atualizado", data)
-            //reset()
-        } catch (e) {
-            toast.error("Erro ao atualizar produto")
-            console.log("Ocorreu um erro ao atualizar produto")
-        }
-    }
 
     async function deleteProduct(id: any) {
         try {
@@ -103,7 +90,7 @@ export function Home() {
                                             <td>{prod.description}</td>
                                             <td>{prod.image}</td>
                                             <td>
-                                                <button onClick={() => changeProduct(prod.id)}>Editar</button>
+                                                <button onClick={() => console.log("editar")}>Editar</button>
                                                 <button onClick={() => deleteProduct(prod.id)}>Deletar</button>
                                             </td>
                                         </tr>
