@@ -38,17 +38,18 @@ export function Home() {
         showProducts()
     }, [])
 
-    // async function addProduct(data: any) {
-    //     try {
-    //         await APIService.insertProduct(data)
-    //         setProducts((prevState: any) => [...prevState, data]);
-    //         toast.success("Produto criado com sucesso")
-    //         console.log("produto cadastrado: ", data)
-    //     } catch (e) {
-    //         toast.error("Erro ao criar produto")
-    //         console.log("Ocorreu um erro ao criar produto", e)
-    //     }
-    // }
+    async function changeProduct(data: string) {
+        try {
+            await APIService.updateProducts(data)
+            setProducts((prevState: string) => [...prevState, data])
+            toast.success("Produto atualizado")
+            console.log("atualizado", data)
+            //reset()
+        } catch (e) {
+            toast.error("Erro ao atualizar produto")
+            console.log("Ocorreu um erro ao atualizar produto")
+        }
+    }
 
     async function deleteProduct(id: any) {
         try {
@@ -101,7 +102,10 @@ export function Home() {
                                             <td>{prod.name}</td>
                                             <td>{prod.description}</td>
                                             <td>{prod.image}</td>
-                                            <td><button onClick={() => deleteProduct(prod.id)}>Deletar</button></td>
+                                            <td>
+                                                <button onClick={() => changeProduct(prod.id)}>Editar</button>
+                                                <button onClick={() => deleteProduct(prod.id)}>Deletar</button>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>

@@ -66,6 +66,15 @@ body {
             padding: 8px;
         }
 
+        td:nth-child(4) {
+            display: flex;
+            justify-content: space-around;
+
+            button {
+                margin-right: 8px;
+            }
+        }
+
         tbody {
 
             tr:nth-child(odd) {

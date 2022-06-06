@@ -12,6 +12,11 @@ export default class APIService{
         const result = await axios.post(`${BaseURL}/products`, data)
     }
 
+    static updateProducts = async (data: string) => {
+        const result = await axios.put(`${BaseURL}/products`, data)
+        return result.data
+    }
+
     static removeProduct = async (id: any) => {
         const result = await axios.delete(`${BaseURL}/products/${id}`)
         return result.data

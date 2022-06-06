@@ -9,12 +9,6 @@ const schema = yup.object({
     name: yup.string().required()
 }).required();
 
-// type Inputs = {
-//     name: string,
-//     description: string,
-//     image: string
-// };
-
 import "./style.scss"
 
 export function Product() {
