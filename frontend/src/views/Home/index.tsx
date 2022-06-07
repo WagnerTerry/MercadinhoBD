@@ -42,7 +42,7 @@ export function Home() {
     async function changeProduct(id: string, data: string) {
         try {
             if (id) {
-                console.log("update entrou", data)
+                //console.log("update entrou", data)
                 navigate("../products", { replace: true, state: data, })
                 // await APIService.updateProducts(data)
                 // toast.success("Produto atualizado")
