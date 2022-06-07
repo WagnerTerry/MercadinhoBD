@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import APIService from '../../services/api';
 
@@ -14,6 +14,7 @@ interface ProductContentProps {
 
 export function Home() {
     const [products, setProducts] = useState([] as any)
+    const navigate = useNavigate()
 
     function screenDarkMode() {
         let element = document.body;
@@ -37,6 +38,22 @@ export function Home() {
 
         showProducts()
     }, [])
+
+    async function changeProduct(id: string, data: string) {
+        try {
+            if (id) {
+                console.log("update entrou", data)
+                navigate("../products", { replace: true, state: data, })
+                // await APIService.updateProducts(data)
+                // toast.success("Produto atualizado")
+                // console.log("atualizado", data)
+                //reset()
+            }
+        } catch (e) {
+            toast.error("Erro ao atualizar produto")
+            console.log("Ocorreu um erro ao atualizar produto")
+        }
+    }
 
     async function deleteProduct(id: any) {
         try {
@@ -84,13 +101,13 @@ export function Home() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.slice(0, 14).map((prod: ProductContentProps, idx: number) => (
+                                    {products.slice(0, 14).map((prod: ProductContentProps, idx: any) => (
                                         <tr key={idx}>
                                             <td>{prod.name}</td>
                                             <td>{prod.description}</td>
-                                            <td>{prod.image}</td>
+                                            <td>{prod.id}</td>
                                             <td>
-                                                <button onClick={() => console.log("editar")}>Editar</button>
+                                                <button onClick={() => changeProduct(prod.id, products[idx])}>Editar</button>
                                                 <button onClick={() => deleteProduct(prod.id)}>Deletar</button>
                                             </td>
                                         </tr>
