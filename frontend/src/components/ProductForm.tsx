@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 import APIService from "../services/api";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -19,6 +20,7 @@ export default function ProductForm(props: ProductFormProps) {
     const { register, handleSubmit, reset } = useForm({
         resolver: yupResolver(schema)
     });
+    const navigate = useNavigate()
 
     async function addProduct(data: any) {
         if (props.id) {
@@ -43,7 +45,7 @@ export default function ProductForm(props: ProductFormProps) {
             await APIService.updateProducts(id, data)
             toast.success("Produto atualizado")
             console.log("Produto atualizado", data)
-            //reset()
+            navigate("/")
         } catch (e) {
             toast.error("Erro ao atualizar produto")
             console.log("Ocorreu um erro ao atualizar produto")

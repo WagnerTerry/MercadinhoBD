@@ -39,14 +39,9 @@ export function Home() {
         showProducts()
     }, [])
 
-    async function changeProduct(id: string, data: string) {
-        try {
-            if (id) {
-                navigate("../products", { replace: true, state: data, })
-            }
-        } catch (e) {
-            toast.error("Erro ao atualizar produto")
-            console.log("Ocorreu um erro ao atualizar produto")
+    async function navigationToUpdateProduct(id: string, data: string) {
+        if (id) {
+            navigate("../products", { replace: true, state: data, })
         }
     }
 
@@ -102,7 +97,7 @@ export function Home() {
                                             <td>{prod.description}</td>
                                             <td>{prod.image}</td>
                                             <td>
-                                                <button onClick={() => changeProduct(prod.id, products[idx])}>Editar</button>
+                                                <button onClick={() => navigationToUpdateProduct(prod.id, products[idx])}>Editar</button>
                                                 <button onClick={() => deleteProduct(prod.id)}>Deletar</button>
                                             </td>
                                         </tr>
