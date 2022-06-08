@@ -42,12 +42,7 @@ export function Home() {
     async function changeProduct(id: string, data: string) {
         try {
             if (id) {
-                //console.log("update entrou", data)
                 navigate("../products", { replace: true, state: data, })
-                // await APIService.updateProducts(data)
-                // toast.success("Produto atualizado")
-                // console.log("atualizado", data)
-                //reset()
             }
         } catch (e) {
             toast.error("Erro ao atualizar produto")
@@ -105,7 +100,7 @@ export function Home() {
                                         <tr key={idx}>
                                             <td>{prod.name}</td>
                                             <td>{prod.description}</td>
-                                            <td>{prod.id}</td>
+                                            <td>{prod.image}</td>
                                             <td>
                                                 <button onClick={() => changeProduct(prod.id, products[idx])}>Editar</button>
                                                 <button onClick={() => deleteProduct(prod.id)}>Deletar</button>

@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import APIService from "../services/api";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { useEffect, useState } from "react";
 
 const schema = yup.object({
     name: yup.string().required()
@@ -16,17 +15,18 @@ interface ProductFormProps {
     image?: string
 }
 
-//const [products, setProducts] = useState([] as any)
-
 export default function ProductForm(props: ProductFormProps) {
     const { register, handleSubmit, reset } = useForm({
         resolver: yupResolver(schema)
     });
 
     async function addProduct(data: any) {
-        if (!data.id) {
+        if (props.id) {
+            changeProduct(props.id, data)
+        }
+        else {
             try {
-                console.log("add product")
+                console.log("add product", data)
                 await APIService.insertProduct(data)
                 toast.success("Produto criado com sucesso")
                 reset()
@@ -36,18 +36,14 @@ export default function ProductForm(props: ProductFormProps) {
                 console.log("Ocorreu um erro ao criar produto", e)
             }
         }
-        else {
-            changeProduct(data.id, data)
-        }
     }
 
-    async function changeProduct(id: string, data: string) {
+    async function changeProduct(id: string, data: ProductFormProps) {
         try {
-            console.log("update entrou")
-            await APIService.updateProducts(data)
+            await APIService.updateProducts(id, data)
             toast.success("Produto atualizado")
-            console.log("atualizado", data)
-            reset()
+            console.log("Produto atualizado", data)
+            //reset()
         } catch (e) {
             toast.error("Erro ao atualizar produto")
             console.log("Ocorreu um erro ao atualizar produto")
