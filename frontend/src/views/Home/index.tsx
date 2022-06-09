@@ -97,6 +97,7 @@ export function Home() {
                                             <td>{prod.description}</td>
                                             <td>
                                                 {prod.image ?
+                                                    // pegar imagem do google drive = http://drive.google.com/uc?export=view&id=<link da imagem>
                                                     <img src={`http://drive.google.com/uc?export=view&id=${prod.image}`}
                                                         alt="Imagem do produto"
                                                     />
