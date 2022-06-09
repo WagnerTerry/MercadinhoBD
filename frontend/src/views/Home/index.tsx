@@ -95,7 +95,14 @@ export function Home() {
                                         <tr key={idx}>
                                             <td>{prod.name}</td>
                                             <td>{prod.description}</td>
-                                            <td>{prod.image}</td>
+                                            <td>
+                                                {prod.image ?
+                                                    <img src={`http://drive.google.com/uc?export=view&id=${prod.image}`}
+                                                        alt="Imagem do produto"
+                                                    />
+                                                    : ""
+                                                }
+                                            </td>
                                             <td>
                                                 <button onClick={() => navigationToUpdateProduct(prod.id, products[idx])}>Editar</button>
                                                 <button onClick={() => deleteProduct(prod.id)}>Deletar</button>
