@@ -47,7 +47,8 @@
 
 - npm i prisma -D
 - npm i @prisma/client
-- npx prisma init -- criar uma tabela { npx prisma migrate dev name new migration: create feedbacks }
+- npx prisma init -- criar uma tabela { 
+- npx prisma migrate dev name new migration: create products }
 - npx prisma studio // visualizar o banco - prisma studio localhost:5555
 
 
